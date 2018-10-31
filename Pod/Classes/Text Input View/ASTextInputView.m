@@ -57,7 +57,7 @@ const static CGFloat kAttachmentButtonBottomMargin = 12;
     self.delegate = delegate;
     self.topBorderline = [[UIView alloc] init];
     self.topBorderline.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0];
-    [self addSubview:self.topBorderline];
+    [self.contentView addSubview:self.topBorderline];
     
     // text view
     self.textView = [[UITextView alloc] init];
@@ -69,20 +69,20 @@ const static CGFloat kAttachmentButtonBottomMargin = 12;
     self.textView.layer.borderColor = [[UIColor colorWithWhite:0.8 alpha:1.0] CGColor];
     self.textView.layer.masksToBounds = YES;
     self.textView.scrollsToTop = NO;
-    [self addSubview:self.textView];
+    [self.contentView addSubview:self.textView];
     
     // send button
     self.sendButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.sendButton.titleLabel setFont:[UIFont systemFontOfSize:18.0f weight:0.3f]];
     [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
     [self.sendButton addTarget:self action:@selector(tellDelegateSendButtonPressedWithMessage) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.sendButton];
+    [self.contentView addSubview:self.sendButton];
     
     // attachment button
     if (attachmentButtonType == ASAttachmentButtonTypePlus) {
         self.attachmentButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
         [self.attachmentButton addTarget:self action:@selector(tellDelegateAttachmentButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.attachmentButton];
+        [self.contentView addSubview:self.attachmentButton];
     }
     
     [self setupSwipeToDismissPanRecognizer];
